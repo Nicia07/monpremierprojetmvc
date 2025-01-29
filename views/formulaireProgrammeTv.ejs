@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page web</title>
+    <link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+    <h1>Formulaire de Programmation TV</h1>
+    <%- include("navbar") -%>
+
+
+     <!-- Type de programme -->
+     <label for="type_programme">Type de programme</label>
+     <select id="type_programme" name="type_programme" required>
+         <option value="Chigoma">Chigoma</option>
+         <option value="dance traditionnel">Dance traditionnel</option>
+         <option value="deba">Deba</option>
+         <option value="manzaraka">Manzaraka</option>
+         <option value="chants">Chants</option>
+         <option value="mbiwi">mbiwi</option>
+         <option value="animation">Animation</option>
+         <option value="actualités">Actualités</option>
+     </select>
+     <!-- Date de diffusion -->
+     <label for="date_diffusion">Date de diffusion :</label>
+     <input type="date" id="date_diffusion" name="date_diffusion" required>
+     <!-- Heure de diffusion -->
+     <label for="heure_diffusion">Heure de diffusion :</label>
+     <input type="time" id="heure_diffusion" name="heure_diffusion" required>
+     <!-- Durée de l'émission -->
+     <label for="duree">Durée (en minutes) :</label>
+     <input type="number" id="duree" name="duree" min="1" placeholder="Durée en minutes" required>
+     <!-- Description de l'émission -->
+     <label for="description">Description de l'émission :</label>
+     <textarea id="description" name="description" rows="4" placeholder="Description de l'émission" required></textarea>
+     <!-- Canal de diffusion -->
+     <label for="canal_diffusion">Canal de diffusion :</label>
+     <input type="text" id="canal_diffusion" name="canal_diffusion" placeholder="Nom du canal" required>
+     <!-- Statut de l'émission (en direct ou rediffusion) -->
+     <label for="statut">Statut :</label>
+     <select id="statut" name="statut" required>
+         <option value="direct">En direct</option>
+         <option value="rediffusion">Rediffusion</option>
+     </select>
+     
+ </form>
+
+ <%- include('footer') %>
+</body>
+</html>
