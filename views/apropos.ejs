@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page web</title>
-    <link rel="stylesheet" href="style.css"></link>
+    <link rel="stylesheet" href="/CSS/apropos.css"></link>
 </head>
 <body>
-    <h1>Formulaire de Programmation TV</h1>
-<%- include("navbar") -%>
+    <h1>Membre de l'equipes</h1>
+<%- include("navbar") %>
 
 
-<% resultat.forEach(resultat => { %> <!-- Pour chaque élément dans le tableau utilisateur.nom -->
-    <h3> <%= resultat.nom %>  <%= resultat.prenom %>  <%= resultat.poste %></h3> <!-- signifie un des noms récupérés dans le tableau -->
-  <% }) %>
-    
+<% resultat.forEach(equipe => { %>
+    <div class="card">
+        <img src="image/directrice.jpg" alt="Avatar" style="width:50%">
+        <div class="container">
+          <h4><b><%= equipe.nom %>  <%= equipe.prenom %></b></h4>
+          <p><%= equipe.poste%></p>
+        </div>
+    </div> 
+
+<% }) %>
+  
 
   <%- include('footer') %>
 </body>

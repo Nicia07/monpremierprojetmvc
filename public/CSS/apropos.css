@@ -1,0 +1,57 @@
+/* En-tête (Titre de la page) */
+h1 {
+    text-align: center;/*Pour mettre le titre au centre*/
+    font-size: 2em;/*Taille de texte*/ 
+    color: #2c3e50;/*couleur du texte*/
+    margin-top: 20px;/*Marge haut*/
+}
+
+/* Mise en forme globale du body */
+body {
+    font-family: Arial, sans-serif;/*police du texte*/
+    background-color: floralwhite;/*couleur de la page*/
+    margin: 0;
+    padding: 0;
+    color: #333;
+
+   
+}
+
+
+
+/*  pour le card */
+.card {
+    box-shadow: #ffcc00;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.card:hover {
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+  }
+
+  .container {
+    padding: 1px 4px;
+  }
+
+  img {
+  border-radius: 5px 5px 0 0;
+  
+}
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

@@ -2,6 +2,8 @@
 // import express from "express";
 const express = require("express");
 
+const aproposRoutes = require('./routes/apropos');
+
 const myConnection = require("express-myconnection");
 const mysql2 = require("mysql2");
 
@@ -9,6 +11,8 @@ const url = require('url');
 
 const fs = require('fs'); // le module fs permet de manipuler des fichiers
 const connection = require("express-myconnection");
+const { console } = require("inspector");
+const apropos = require("./controllers/apropos");
 
 //crée l'application express.js dans la variable app
 const app = express();
@@ -35,17 +39,11 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));//
 
-app.get("/", (req, res) => { // ("/") veut dire que la route est par défaut
-    res.writeHead(200, {
-        'Content-type' : 'text/html;charset=UTF-8'
-    });
-    res.write("<b>Hello</b> Bienvenu dans nos chaine TV ");
-    res.end();
-});
+
 
     
   
-// Route pour récupérer les plats depuis la base de données et les afficher
+// Route pour récupérer l'equipe  depuis la base de données et les afficher
 app.get("/apropos", (req, res) => {
     req.getConnection((erreur, connection) => {
         if (erreur) {
@@ -66,7 +64,7 @@ app.get("/apropos", (req, res) => {
 });
 
 
-// Route pour récupérer les plats depuis la base de données et les afficher
+// Route pour récupérer le programmeTv depuis la base de données et les afficher 
 app.get("/programmeTv", (req, res) => {
     req.getConnection((erreur, connection) => {
         if (erreur) {
@@ -87,14 +85,81 @@ app.get("/programmeTv", (req, res) => {
 });
 
 
+// Route POST pour soumettre les données du formulaire
+app.post('/formulaireprogrammeTV', (req, res) => {
+    const { nom, type_programme, date_diffusion, canal_diffusion, lien_youtube } = req.body;
+
+    // Connexion à la base de données via req.getConnection
+    req.getConnection((err, connection) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send("Erreur de connexion à la base de données");
+        }
+
+        // Requête SQL pour insérer les données dans la table programmediffusion
+        const query = "INSERT INTO programmediffusion (nom, type_programme, Date_diffusion, nom_Canal, lien_youtube) VALUES (?, ?, ?, ?, ?)";
+        const values = [nom, type_programme, date_diffusion, canal_diffusion, lien_youtube];
+
+        connection.query(query, values, (err, result) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send("Erreur lors de l'insertion des données");
+            }
+
+            console.log('Données insérées avec succès');
+            
+            // Rediriger vers la page des programmes TV pour afficher les résultats
+            res.redirect("/ProgrammeTV");
+        });
+    });
+});
+
 
 app.get("/formulaireProgrammeTv", (req, res) => {
-    formulaire={
-       type_programme:["mbiwi","dance traditionnel","chants"],
-    }
-    res.render("formulaireProgrammeTv",formulaire);
-    
-
+    res.render("formulaireProgrammetv");
 });
+
+app.get("/login", (req,res) => {
+    res.render("login")
+});
+
+app.get("/signup", (req,res) => {
+    res.render("signup")
+});
+
+
+// Route POST pour soumettre les données du formulaire
+app.post('/login', (req, res) => {
+    const { nom, prenom, email, mot_de_passe, date_naissance } = req.body;
+
+    // Connexion à la base de données via req.getConnection
+    req.getConnection((err, connection) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send("Erreur de connexion à la base de données");
+        }
+
+        // Requête SQL pour insérer les données dans la table programmediffusion
+        const query = "INSERT INTO utilisateur(nom, prenom, email, mot_de_passe, date_naissance) VALUES (?, ?, ?, ?, ?)";
+        const values = [nom, prenom, email, mot_de_passe, date_naissance];
+
+        connection.query(query, values, (err, result) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).send("Erreur lors de l'insertion des données");
+            }
+
+            console.log('Données insérées avec succès');
+            
+            // Rediriger vers la page de signup pour afficher les résultats
+            res.redirect("/signup");
+        });
+    });
+});
+
+
+
+//Mise a jours apre la declaration des routers
+ app.use('/', aproposRoutes);
 
 module.exports = app;

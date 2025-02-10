@@ -1,0 +1,138 @@
+
+/* Mise en forme globale du body */
+body {
+    font-family: Arial, sans-serif;
+    background-color:#f2f2f2;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    align-items: center;
+    
+}
+
+/* En-tête (Titre de la page) */
+h1 {
+    text-align: center;
+    font-size: 1em;
+    color: rgb(37, 44, 37);
+    margin-top: 10px;
+}
+
+
+
+
+
+/* Mise en forme des résultats (programme TV) */
+h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #34495e;
+}
+
+
+.results {
+    margin: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space;
+    gap: 90px ;
+    list-style-type: none;
+    width: 40%;/*La largeur de mon formulaire*/
+    
+   
+}
+
+/* Responsivité : ajuster le formulaire pour les petits écrans */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .results {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+td {
+    padding: 1px;
+    text-align: center;
+    border: 1px solid black;
+    color: #333;
+    background-color:navajowhite;
+    vertical-align: middle;
+}
+
+th {
+    background-color: mediumaquamarine;
+    text-align: center;
+    color: #333;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 80%;/*La largeur de mon formulaire*/
+    margin: 20px auto;
+   
+  }
+
+
+  /* css pour mes video  */
+
+
+  .video-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .video-container iframe {
+    border-radius: 10px;
+    width: 300px;  /* Réduction de la taille */
+    height: 225px; /* Proportions ajustées */
+    
+  }
+
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+        margin: 10px;
+    }
+}
+  
+ 
+  
+
+

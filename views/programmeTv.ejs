@@ -3,19 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page web</title>
-    <link rel="stylesheet" href="style.css"></link>
+    <title>Programme TV</title>
+    <link rel="stylesheet" href="/CSS/programme.css">
 </head>
-<body>
-    <h1> Programme TV</h1>
+<body id="bouge">
+    <h1>Programme TV</h1>
     
     <%- include("navbar") -%>
-    
 
-    <% resultat.forEach(resultat => { %> <!-- Pour chaque élément dans le tableau utilisateur.nom -->
-        <h3> <%= resultat.nom %>  <%= resultat.type_programme %>  <%= resultat.Date_diffusion %></h3> <!-- signifie un des noms récupérés dans le tableau -->
-      <% }) %>
+    <!-- Création du tableau -->
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Type de programme</th>
+                <th>Date de diffusion</th>
+                <th>Nom Canal</th>
+                <th>Lien Youtube</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% resultat.forEach(resultat => { %>
+                <tr>
+                    <td><%= resultat.nom %></td>
+                    <td><%= resultat.type_programme %></td>
+                    <td><%= resultat.Date_diffusion %></td>
+                    <td><%= resultat.nom_Canal %></td>
+                    <td><%= resultat.lien_youtube %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
     
-      <%- include('footer') %>
+    <div class="video-container">
+        <iframe width="420" height="315" src="<%= 'https://www.youtube.com/embed/HAMCQJ6CTGE' %>"></iframe>
+        <iframe width="420" height="315" src="https://www.youtube.com/embed/YgZ2cnj22M0"></iframe>
+        <iframe width="420" height="315" src="https://www.youtube.com/embed/GsKt9kon8GE"></iframe>
+        <iframe width="420" height="315" src="https://www.youtube.com/embed/BwKIIC7U6HQ"></iframe>
+        <iframe width="420" height="315" src="https://www.youtube.com/embed/EhZQHLLQRWg"></iframe>
+    </div>
+    
+    <%- include('footer') %>
 </body>
 </html>
