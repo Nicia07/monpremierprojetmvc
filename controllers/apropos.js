@@ -1,5 +1,5 @@
 module.exports = { // la module.export qui vas renvoyer des requette dans  
-    aproposView: (req, res) => {//vu qui prend 2 paramettre 
+    aproposViews: (req, res) => {//vu qui prend 2 paramettre 
         req.getConnection((erreur, connection) => {
                 if (erreur) {
                     console.log(erreur);

@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire d'inscription</title>
-    <link rel="stylesheet" href="style.css"> <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" href="CSS/signup.css"> <!-- Lien vers le fichier CSS -->
 </head>
 <body>
     <%- include("navbar") -%>
     <div class="form-container">
         <h1>Inscription</h1>
-        <form action="/submit-inscription" method="POST">
-            <!-- Champ pour le nom -->
+
+
+
+        <form action="/signup" method="POST">
+
+         <!-- Champ pour le nom -->
             <div class="form-group">
                 <label for="nom">Nom</label>
                 <input type="text" id="nom" name="nom" required placeholder="Entrez votre nom">
@@ -38,12 +42,16 @@
             <!-- Champ pour le mot de passe -->
             <div class="form-group">
                 <label for="mot_de_passe">Mot de passe</label>
-                <input type="password" id="mot_de_passe" name="mot_de_passe" required placeholder="Entrez votre mot de passe">
+                <input type="password" id="password" name="password" required placeholder="Entrez votre mot de passe">
+
             </div>
 
             <!-- Bouton d'envoi -->
             <button type="submit">S'inscrire</button>
         </form>
     </div>
+
+    <%- include('footer') %>
+
 </body>
 </html>

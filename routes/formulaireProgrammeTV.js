@@ -2,7 +2,7 @@
 
 const express = require('express');// recupere la ligne expresse et stock dans express
 
-const aproposControllers = require('../controllers/apropos');
+const formulaireProgrammeTvControllers = require('../controllers/formulaireProgrammeTV');
 
 const router = express.Router();//créer une variable Router qui vas permettre de stocker toute les routes('/').
 
@@ -13,7 +13,8 @@ const router = express.Router();//créer une variable Router qui vas permettre d
 // });  Remplace la syntaxe d'habitude 
 
 
-router.get('/apropos', aproposControllers.aproposViews);//exécute la fonction aproposView du contrôleur aproposControllers pour gérer la requête et la réponse.
+router.get('/formulaireProgrammeTV', formulaireProgrammeTvControllers.formulaireProgrammeTvViews);//exécute la fonction aproposView du contrôleur aproposControllers pour gérer la requête et la réponse.
 
+router.post('/submit-programme', formulaireProgrammeTvControllers.formulairetvVerification);
 
 module.exports = router;
